@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+
+  consul_server1:
+    image: consul:consul
+    container_name: consul_server1
+    command: agent -server -client=0.0.0.0 -bootstrap -node=consul_server1 -datacenter=dc1
+
+  consul_server2:
+    depends_on:
+      - consul_server1
+    image: consul:consul
+    container_name: consul_server2
+    command: agent -server -client=0.0.0.0 -retry-join=consul_server1 -node=consul_server2 -datacenter=dc1
+
+  consul_server3:
+    depends_on:
+      - consul_server1
+    image: consul:consul
+    container_name: consul_server3
+    command: agent -server -client=0.0.0.0 -retry-join=consul_server1 -node=consul_server3 -datacenter=dc1
+
+  consul_client1:
+    depends_on:
+      - consul_server1
+    image: consul:consul
+    container_name: consul_client1
+    ports:
+      - 8500:8500
+    command: agent -ui -client=0.0.0.0 -retry-join=consul_server1 -node=consul_client1 -datacenter=dc1
