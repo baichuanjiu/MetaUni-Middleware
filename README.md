@@ -1,5 +1,5 @@
 # MetaUni-MiddleWare
-Contains docker-compose.yml to build middleware for MetaUni  
+Contains docker-compose.yml to build middleware for MetaUni.  
 此文档帮助您使用Docker构建MetaUni项目中使用到的Middleware（目前包括Consul、MinIO、RabbitMQ和Redis）  
 阅读文档前请先确保：  
 + 您使用的操作系统为Windows
