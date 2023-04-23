@@ -73,3 +73,17 @@ services:
         max-size: 100m
         max-file: 2
     command: redis-server /etc/redis/redis.conf  --appendonly yes  --requirepass Password123
+
+  seq:
+    image: datalust/seq
+    container_name: Seq
+    ports:
+      - 8001:80
+      - 5341:5341
+    environment:
+      - ACCEPT_EULA=Y
+      - SEQ_CACHE_SYSTEMTAMTARGET=0
+    volumes:
+      - .\Seq\data:/data
+    mem_limit: 512m
+    mem_reservation: 512m
