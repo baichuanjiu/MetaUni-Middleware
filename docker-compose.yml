@@ -85,5 +85,3 @@ services:
       - SEQ_CACHE_SYSTEMTAMTARGET=0
     volumes:
       - .\Seq\data:/data
-    mem_limit: 512m
-    mem_reservation: 512m
